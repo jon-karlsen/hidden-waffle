@@ -19,5 +19,7 @@ func Init() ( *gorm.DB , error ) {
         return nil , err
     }
 
+    db.AutoMigrate( &Todo{} )
+
     return db , nil
 }

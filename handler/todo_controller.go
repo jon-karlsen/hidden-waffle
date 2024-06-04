@@ -1,10 +1,11 @@
-package handlers
+package handler
+
 
 import (
+	"hidden-waffle/service"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"gorm.io/gorm"
 )
 
 
@@ -19,7 +20,7 @@ type TodoResponse struct {
 
 
 type TodoResource struct {
-    db *gorm.DB
+    ts service.TodoService
 }
 
 
@@ -37,16 +38,19 @@ func ( ts TodoResource ) Routes() chi.Router {
 }
 
 
-func ( ts TodoResource ) Index ( w http.ResponseWriter , r *http.Request ) {
+func ( tr TodoResource ) Index ( w http.ResponseWriter , r *http.Request ) {
+    res , err := tr.ts.Index ()
     w.Write ( []byte ( "sdkljaskldjalksjdaksjdaskdj" ) )
 }
 
 
-func ( ts TodoResource ) CreateTodo ( w http.ResponseWriter , r *http.Request  ) {
+func ( tr TodoResource ) CreateTodo ( w http.ResponseWriter , r *http.Request  ) {
+    res , err := tr.ts.Index ()
     w.Write ( []byte ( "sdkljaskldjalksjdaksjdaskdj" ) )
 }
 
 
-func ( ts TodoResource ) DeleteTodo ( w http.ResponseWriter , r *http.Request ) {
+func ( tr TodoResource ) DeleteTodo ( w http.ResponseWriter , r *http.Request ) {
+    res , err := tr.ts.Index ()
     w.Write ( []byte ( "sdkljaskldjalksjdaksjdaskdj" ) )
 }
